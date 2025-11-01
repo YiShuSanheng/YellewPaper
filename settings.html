@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置中心 - 我的导航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #4299E1, #ED8936);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .setting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4299E1;
+        }
+        input:checked + .slider:before {
+            transform: translateX(24px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">N</span>
+                        </div>
+                        <h1 class="text-xl font-semibold text-gray-900">我的导航</h1>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                    </a>
+                    <a href="search.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <!-- 页面标题 -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                <span class="gradient-text">设置中心</span>
+            </h2>
+            <p class="text-xl text-gray-600">个性化您的导航体验</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 左侧设置菜单 -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">设置分类</h3>
+                    <nav class="space-y-2">
+                        <button class="settings-nav-btn w-full text-left px-4 py-3 rounded-lg bg-blue-50 text-blue-700 font-medium transition-all duration-200" data-section="appearance">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                                </svg>
+                                <span>外观设置</span>
+                            </div>
+                        </button>
+                        
+                        <button class="settings-nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-section="websites">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                                <span>网站管理</span>
+                            </div>
+                        </button>
+                        
+                        <button class="settings-nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-section="search">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <span>搜索设置</span>
+                            </div>
+                        </button>
+                        
+                        <button class="settings-nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-section="data">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+                                </svg>
+                                <span>数据管理</span>
+                            </div>
+                        </button>
+                        
+                        <button class="settings-nav-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-section="about">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>关于</span>
+                            </div>
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- 右侧设置内容 -->
+            <div class="lg:col-span-2">
+                <!-- 外观设置 -->
+                <div id="appearance-section" class="settings-section">
+                    <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">外观设置</h3>
+                        
+                        <div class="space-y-8">
+                            <!-- 主题设置 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900">深色模式</h4>
+                                        <p class="text-sm text-gray-600 mt-1">切换到深色主题，保护眼睛</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="dark-mode-toggle">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 布局设置 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">布局设置</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">网站卡片大小</label>
+                                        <select id="card-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="small">小</option>
+                                            <option value="medium" selected>中</option>
+                                            <option value="large">大</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">每行显示数量</label>
+                                        <select id="cards-per-row" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            <option value="4">4个</option>
+                                            <option value="6" selected>6个</option>
+                                            <option value="8">8个</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 动画设置 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900">动画效果</h4>
+                                        <p class="text-sm text-gray-600 mt-1">启用页面动画和过渡效果</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="animations-toggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 网站管理 -->
+                <div id="websites-section" class="settings-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-2xl font-semibold text-gray-900">网站管理</h3>
+                            <button id="add-website-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                                添加网站
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- 网站列表 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="websites-list">
+                                <!-- 网站项目将通过JavaScript动态加载 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 搜索设置 -->
+                <div id="search-section" class="settings-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">搜索设置</h3>
+                        
+                        <div class="space-y-8">
+                            <!-- 默认搜索引擎 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">默认搜索引擎</h4>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="default-engine" value="google" class="text-blue-600" checked>
+                                        <span class="text-sm font-medium text-gray-900">Google</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="default-engine" value="baidu" class="text-blue-600">
+                                        <span class="text-sm font-medium text-gray-900">百度</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="default-engine" value="bing" class="text-blue-600">
+                                        <span class="text-sm font-medium text-gray-900">Bing</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 cursor-pointer">
+                                        <input type="radio" name="default-engine" value="duckduckgo" class="text-blue-600">
+                                        <span class="text-sm font-medium text-gray-900">DuckDuckGo</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 搜索历史 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900">保存搜索历史</h4>
+                                        <p class="text-sm text-gray-600 mt-1">记录您的搜索关键词以便快速访问</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="search-history-toggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 搜索建议 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="text-lg font-medium text-gray-900">搜索建议</h4>
+                                        <p class="text-sm text-gray-600 mt-1">输入时显示相关网站建议</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="search-suggestions-toggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据管理 -->
+                <div id="data-section" class="settings-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">数据管理</h3>
+                        
+                        <div class="space-y-8">
+                            <!-- 导出数据 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">导出数据</h4>
+                                <p class="text-sm text-gray-600 mb-4">将您的设置、网站列表和搜索历史导出为JSON文件</p>
+                                <button id="export-data-btn" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200">
+                                    导出数据
+                                </button>
+                            </div>
+
+                            <!-- 导入数据 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">导入数据</h4>
+                                <p class="text-sm text-gray-600 mb-4">从JSON文件导入设置和网站列表</p>
+                                <input type="file" id="import-data-input" accept=".json" class="hidden">
+                                <button id="import-data-btn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                                    选择文件
+                                </button>
+                            </div>
+
+                            <!-- 清理数据 -->
+                            <div class="setting-card p-6 border border-gray-200 rounded-lg transition-all duration-300">
+                                <h4 class="text-lg font-medium text-gray-900 mb-4">清理数据</h4>
+                                <div class="space-y-3">
+                                    <button id="clear-search-history-btn" class="w-full text-left px-4 py-3 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors duration-200">
+                                        清空搜索历史
+                                    </button>
+                                    <button id="clear-visit-history-btn" class="w-full text-left px-4 py-3 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors duration-200">
+                                        清空访问历史
+                                    </button>
+                                    <button id="reset-all-btn" class="w-full text-left px-4 py-3 bg-red-50 text-red-700 rounded-lg hover:bg-red-100 transition-colors duration-200">
+                                        重置所有设置
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 关于页面 -->
+                <div id="about-section" class="settings-section hidden">
+                    <div class="bg-white rounded-xl shadow-sm p-8 mb-6">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">关于</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-white font-bold text-2xl">N</span>
+                                </div>
+                                <h4 class="text-xl font-semibold text-gray-900 mb-2">我的导航</h4>
+                                <p class="text-gray-600">版本 1.0.0</p>
+                            </div>
+
+                            <div class="border-t border-gray-200 pt-6">
+                                <h5 class="font-semibold text-gray-900 mb-3">功能特性</h5>
+                                <ul class="space-y-2 text-sm text-gray-600">
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>智能搜索和多引擎支持</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>网站分类和快速访问</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>个性化主题和布局</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>使用统计和数据分析</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="border-t border-gray-200 pt-6">
+                                <h5 class="font-semibold text-gray-900 mb-3">技术栈</h5>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <span class="font-medium text-gray-700">前端：</span>
+                                        <span class="text-gray-600">HTML5, CSS3, JavaScript</span>
+                                    </div>
+                                    <div>
+                                        <span class="font-medium text-gray-700">样式：</span>
+                                        <span class="text-gray-600">Tailwind CSS</span>
+                                    </div>
+                                    <div>
+                                        <span class="font-medium text-gray-700">动画：</span>
+                                        <span class="text-gray-600">Anime.js</span>
+                                    </div>
+                                    <div>
+                                        <span class="font-medium text-gray-700">图表：</span>
+                                        <span class="text-gray-600">ECharts.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 添加网站模态框 -->
+    <div id="add-website-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4">
+            <h3 class="text-xl font-semibold text-gray-900 mb-6">添加新网站</h3>
+            <form id="add-website-form">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">网站名称</label>
+                        <input type="text" id="website-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">网站URL</label>
+                        <input type="url" id="website-url" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">描述</label>
+                        <input type="text" id="website-description" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">分类</label>
+                        <select id="website-category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="work">工作办公</option>
+                            <option value="study">学习资源</option>
+                            <option value="entertainment">娱乐休闲</option>
+                            <option value="life">生活服务</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" id="cancel-add-website" class="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                        取消
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                        添加
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-white border-t border-gray-200 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-gray-600 text-sm">
+                    © 2024 我的导航. 个性化您的网络体验.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 设置页面JavaScript
+        class SettingsPage {
+            constructor() {
+                this.settings = this.loadSettings();
+                this.websites = this.loadWebsites();
+                this.init();
+            }
+
+            init() {
+                this.initEventListeners();
+                this.loadCurrentSettings();
+                this.renderWebsitesList();
+                this.initAnimations();
+            }
+
+            initEventListeners() {
+                // 导航菜单
+                document.querySelectorAll('.settings-nav-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.switchSection(e.currentTarget.dataset.section);
+                    });
+                });
+
+                // 设置项
+                document.getElementById('dark-mode-toggle').addEventListener('change', (e) => {
+                    this.toggleDarkMode(e.target.checked);
+                });
+
+                document.getElementById('animations-toggle').addEventListener('change', (e) => {
+                    this.settings.animations = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('card-size').addEventListener('change', (e) => {
+                    this.settings.cardSize = e.target.value;
+                    this.saveSettings();
+                });
+
+                document.getElementById('cards-per-row').addEventListener('change', (e) => {
+                    this.settings.cardsPerRow = e.target.value;
+                    this.saveSettings();
+                });
+
+                // 搜索引擎选择
+                document.querySelectorAll('input[name="default-engine"]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            this.settings.defaultEngine = e.target.value;
+                            this.saveSettings();
+                        }
+                    });
+                });
+
+                // 搜索设置
+                document.getElementById('search-history-toggle').addEventListener('change', (e) => {
+                    this.settings.saveSearchHistory = e.target.checked;
+                    this.saveSettings();
+                });
+
+                document.getElementById('search-suggestions-toggle').addEventListener('change', (e) => {
+                    this.settings.searchSuggestions = e.target.checked;
+                    this.saveSettings();
+                });
+
+                // 数据管理
+                document.getElementById('export-data-btn').addEventListener('click', () => {
+                    this.exportData();
+                });
+
+                document.getElementById('import-data-btn').addEventListener('click', () => {
+                    document.getElementById('import-data-input').click();
+                });
+
+                document.getElementById('import-data-input').addEventListener('change', (e) => {
+                    this.importData(e.target.files[0]);
+                });
+
+                document.getElementById('clear-search-history-btn').addEventListener('click', () => {
+                    this.clearSearchHistory();
+                });
+
+                document.getElementById('clear-visit-history-btn').addEventListener('click', () => {
+                    this.clearVisitHistory();
+                });
+
+                document.getElementById('reset-all-btn').addEventListener('click', () => {
+                    this.resetAllSettings();
+                });
+
+                // 网站管理
+                document.getElementById('add-website-btn').addEventListener('click', () => {
+                    this.showAddWebsiteModal();
+                });
+
+                document.getElementById('cancel-add-website').addEventListener('click', () => {
+                    this.hideAddWebsiteModal();
+                });
+
+                document.getElementById('add-website-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.addWebsite();
+                });
+            }
+
+            switchSection(section) {
+                // 更新导航状态
+                document.querySelectorAll('.settings-nav-btn').forEach(btn => {
+                    btn.classList.remove('bg-blue-50', 'text-blue-700');
+                    btn.classList.add('hover:bg-gray-50', 'text-gray-700');
+                });
+
+                document.querySelector(`[data-section="${section}"]`).classList.add('bg-blue-50', 'text-blue-700');
+                document.querySelector(`[data-section="${section}"]`).classList.remove('hover:bg-gray-50', 'text-gray-700');
+
+                // 显示对应内容
+                document.querySelectorAll('.settings-section').forEach(sec => {
+                    sec.classList.add('hidden');
+                });
+
+                document.getElementById(`${section}-section`).classList.remove('hidden');
+            }
+
+            loadCurrentSettings() {
+                // 加载当前设置到界面
+                document.getElementById('dark-mode-toggle').checked = this.settings.darkMode;
+                document.getElementById('animations-toggle').checked = this.settings.animations;
+                document.getElementById('card-size').value = this.settings.cardSize || 'medium';
+                document.getElementById('cards-per-row').value = this.settings.cardsPerRow || '6';
+                document.getElementById('search-history-toggle').checked = this.settings.saveSearchHistory !== false;
+                document.getElementById('search-suggestions-toggle').checked = this.settings.searchSuggestions !== false;
+
+                // 搜索引擎
+                const engineRadio = document.querySelector(`input[name="default-engine"][value="${this.settings.defaultEngine || 'google'}"]`);
+                if (engineRadio) {
+                    engineRadio.checked = true;
+                }
+            }
+
+            toggleDarkMode(enabled) {
+                this.settings.darkMode = enabled;
+                this.saveSettings();
+
+                if (enabled) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+
+            renderWebsitesList() {
+                const container = document.getElementById('websites-list');
+                const allWebsites = Object.values(this.websites).flat();
+
+                container.innerHTML = allWebsites.map((site, index) => `
+                    <div class="p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors duration-200">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                                    <span class="text-white font-bold text-sm">${site.name.charAt(0)}</span>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900">${site.name}</h5>
+                                    <p class="text-sm text-gray-600">${site.description}</p>
+                                    <p class="text-xs text-gray-500">${site.url}</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <button class="text-blue-600 hover:text-blue-700 transition-colors duration-200" onclick="settingsPage.editWebsite(${index})">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    </svg>
+                                </button>
+                                <button class="text-red-600 hover:text-red-700 transition-colors duration-200" onclick="settingsPage.deleteWebsite(${index})">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            showAddWebsiteModal() {
+                document.getElementById('add-website-modal').classList.remove('hidden');
+            }
+
+            hideAddWebsiteModal() {
+                document.getElementById('add-website-modal').classList.add('hidden');
+                document.getElementById('add-website-form').reset();
+            }
+
+            addWebsite() {
+                const name = document.getElementById('website-name').value.trim();
+                const url = document.getElementById('website-url').value.trim();
+                const description = document.getElementById('website-description').value.trim();
+                const category = document.getElementById('website-category').value;
+
+                if (!name || !url) {
+                    alert('请填写网站名称和URL');
+                    return;
+                }
+
+                // 确保URL格式正确
+                let formattedUrl = url;
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    formattedUrl = 'https://' + url;
+                }
+
+                const newWebsite = {
+                    name: name,
+                    url: formattedUrl,
+                    description: description || '自定义网站'
+                };
+
+                if (!this.websites[category]) {
+                    this.websites[category] = [];
+                }
+
+                this.websites[category].push(newWebsite);
+                this.saveWebsites();
+                this.renderWebsitesList();
+                this.hideAddWebsiteModal();
+
+                // 显示成功消息
+                this.showNotification('网站添加成功！', 'success');
+            }
+
+            editWebsite(index) {
+                alert('编辑功能即将推出');
+            }
+
+            deleteWebsite(index) {
+                if (confirm('确定要删除这个网站吗？')) {
+                    const allWebsites = Object.values(this.websites).flat();
+                    const websiteToDelete = allWebsites[index];
+
+                    // 找到并删除网站
+                    for (const category in this.websites) {
+                        this.websites[category] = this.websites[category].filter(
+                            site => !(site.name === websiteToDelete.name && site.url === websiteToDelete.url)
+                        );
+                    }
+
+                    this.saveWebsites();
+                    this.renderWebsitesList();
+                    this.showNotification('网站删除成功！', 'success');
+                }
+            }
+
+            exportData() {
+                const data = {
+                    settings: this.settings,
+                    websites: this.websites,
+                    exportDate: new Date().toISOString()
+                };
+
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `navigation-data-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showNotification('数据导出成功！', 'success');
+            }
+
+            importData(file) {
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+                        
+                        if (data.settings) {
+                            this.settings = { ...this.settings, ...data.settings };
+                            this.saveSettings();
+                        }
+                        
+                        if (data.websites) {
+                            this.websites = data.websites;
+                            this.saveWebsites();
+                        }
+
+                        this.loadCurrentSettings();
+                        this.renderWebsitesList();
+                        this.showNotification('数据导入成功！', 'success');
+                    } catch (error) {
+                        this.showNotification('文件格式错误，导入失败！', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            }
+
+            clearSearchHistory() {
+                if (confirm('确定要清空所有搜索历史吗？')) {
+                    localStorage.removeItem('search-history');
+                    this.showNotification('搜索历史已清空！', 'success');
+                }
+            }
+
+            clearVisitHistory() {
+                if (confirm('确定要清空所有访问历史吗？')) {
+                    localStorage.removeItem('navigation-visit-history');
+                    this.showNotification('访问历史已清空！', 'success');
+                }
+            }
+
+            resetAllSettings() {
+                if (confirm('确定要重置所有设置吗？这将清除所有数据且不可恢复！')) {
+                    localStorage.clear();
+                    this.settings = {};
+                    this.websites = {};
+                    this.showNotification('所有设置已重置！', 'success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 1000);
+                }
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 ${
+                    type === 'success' ? 'bg-green-500' : 
+                    type === 'error' ? 'bg-red-500' : 'bg-blue-500'
+                }`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            loadSettings() {
+                return JSON.parse(localStorage.getItem('navigation-settings')) || {};
+            }
+
+            saveSettings() {
+                localStorage.setItem('navigation-settings', JSON.stringify(this.settings));
+            }
+
+            loadWebsites() {
+                return JSON.parse(localStorage.getItem('navigation-websites')) || {
+                    work: [
+                        { name: 'Gmail', url: 'https://gmail.com', description: '邮件服务' },
+                        { name: 'Google Drive', url: 'https://drive.google.com', description: '云存储' },
+                        { name: 'Slack', url: 'https://slack.com', description: '团队协作' }
+                    ],
+                    study: [
+                        { name: 'Coursera', url: 'https://coursera.org', description: '在线课程' },
+                        { name: 'GitHub', url: 'https://github.com', description: '代码托管' }
+                    ],
+                    entertainment: [
+                        { name: 'YouTube', url: 'https://youtube.com', description: '视频平台' },
+                        { name: 'Netflix', url: 'https://netflix.com', description: '流媒体' }
+                    ],
+                    life: [
+                        { name: 'Amazon', url: 'https://amazon.com', description: '购物平台' },
+                        { name: 'Weather', url: 'https://weather.com', description: '天气预报' }
+                    ]
+                };
+            }
+
+            saveWebsites() {
+                localStorage.setItem('navigation-websites', JSON.stringify(this.websites));
+            }
+
+            initAnimations() {
+                if (typeof anime !== 'undefined') {
+                    anime({
+                        targets: '.setting-card',
+                        translateY: [20, 0],
+                        opacity: [0, 1],
+                        duration: 600,
+                        delay: anime.stagger(100),
+                        easing: 'easeOutQuad'
+                    });
+                }
+            }
+        }
+
+        // 初始化设置页面
+        document.addEventListener('DOMContentLoaded', () => {
+            window.settingsPage = new SettingsPage();
+        });
+    </script>
+</body>
+</html>
