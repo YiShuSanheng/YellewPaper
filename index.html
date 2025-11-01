@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>Horizonier的学术宇宙</title>
+  <title>Horizonier's Academic Universe</title>
   <style>
     :root {
       --accent: #007acc;
@@ -64,7 +64,7 @@
 </head>
 
 <body>
-  <h1>Horizonier的学术宇宙</h1>
+  <h1>Horizonier's Academic Universe</h1>
 
   <section class="grid">
     <!-- Foldseek -->
@@ -85,9 +85,9 @@
       <a href="https://loschmidt.chemi.muni.cz/hotspotwizard" target="_blank" rel="noopener">蛋白质热点突变设计</a>
     </div>
 
-    <!-- vENUSfACTORY -->
+    <!-- VenusFactory -->
     <div class="card">
-      <h2>vENUSfACTORY</h2>
+      <h2>VenusFactory</h2>
       <a href="https://venusfactory.cn/playground" target="_blank" rel="noopener">在线平台</a>
       <a href="https://github.com/ai4protein/VenusFactory" target="_blank" rel="noopener">GitHub 仓库</a>
     </div>
@@ -98,224 +98,5 @@
       <a href="https://github.com/ai4protein" target="_blank" rel="noopener">全部开源仓库</a>
     </div>
   </section>
-</head>
-<body class="bg-gray-50 min-h-screen">
-    <!-- 粒子背景容器 -->
-    <div id="particles-container"></div>
-
-    <!-- 导航栏 -->
-    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-4">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-sm">N</span>
-                        </div>
-                        <h1 class="text-xl font-semibold text-gray-900">Horizonier的学术宇宙</h1>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="search.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </a>
-                    <a href="settings.html" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </a>
-                    <button id="theme-toggle" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero区域 -->
-    <section class="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-50"></div>
-        <div class="relative max-w-4xl mx-auto text-center">
-            <div class="animate-fade-in">
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                    快速访问您的
-                    <span class="gradient-text">网络世界</span>
-                </h2>
-                <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-                    智能搜索、分类管理、个性化设置，让您的网络浏览体验更加高效便捷
-                </p>
-            </div>
-            
-            <!-- 搜索栏 -->
-            <div class="animate-fade-in max-w-2xl mx-auto mb-12">
-                <div class="relative">
-                    <input 
-                        type="text" 
-                        id="search-input"
-                        placeholder="搜索网站或输入关键词..."
-                        class="w-full px-6 py-4 text-lg bg-white rounded-full shadow-lg border-0 focus:outline-none search-glow transition-all duration-300"
-                    >
-                    <button class="absolute right-2 top-2 p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </button>
-                    
-                    <!-- 搜索建议 -->
-                    <div id="search-suggestions" class="absolute top-full left-0 right-0 bg-white rounded-lg shadow-xl mt-2 hidden z-50 max-h-80 overflow-y-auto"></div>
-                </div>
-            </div>
-
-            <!-- 快速访问 -->
-            <div class="animate-fade-in">
-                <h3 class="text-lg font-medium text-gray-700 mb-6">快速访问</h3>
-                <div id="quick-access" class="grid grid-cols-4 md:grid-cols-8 gap-4 max-w-4xl mx-auto"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 主要内容区域 -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- 左侧边栏 - 分类导航 -->
-            <div class="lg:col-span-1">
-                <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">网站分类</h3>
-                    <nav class="space-y-2">
-                        <button class="category-btn w-full text-left px-4 py-3 rounded-lg bg-blue-50 text-blue-700 font-medium transition-all duration-200" data-category="work">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm">💼</span>
-                                </div>
-                                <span>工作办公</span>
-                            </div>
-                        </button>
-                        <button class="category-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-category="study">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm">📚</span>
-                                </div>
-                                <span>学习资源</span>
-                            </div>
-                        </button>
-                        <button class="category-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-category="entertainment">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm">🎮</span>
-                                </div>
-                                <span>娱乐休闲</span>
-                            </div>
-                        </button>
-                        <button class="category-btn w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-700 transition-all duration-200" data-category="life">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm">🏠</span>
-                                </div>
-                                <span>生活服务</span>
-                            </div>
-                        </button>
-                    </nav>
-                </div>
-            </div>
-
-            <!-- 中央内容区域 - 网站网格 -->
-            <div class="lg:col-span-2">
-                <div class="mb-6">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-2">网站导航</h2>
-                    <p class="text-gray-600">点击分类查看相关网站</p>
-                </div>
-                
-                <div id="categories-container" class="space-y-8">
-                    <!-- 网站分类内容将通过JavaScript动态加载 -->
-                </div>
-            </div>
-
-            <!-- 右侧边栏 - 统计和最近访问 -->
-            <div class="lg:col-span-1">
-                <div class="space-y-6">
-                    <!-- 使用统计 -->
-                    <div class="bg-white rounded-xl shadow-sm p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">使用统计</h3>
-                        <div id="user-stats" style="height: 200px;"></div>
-                    </div>
-
-                    <!-- 最近访问 -->
-                    <div class="bg-white rounded-xl shadow-sm p-6">
-                        <h3 class="text-lg font-semibold text-gray-900 mb-4">最近访问</h3>
-                        <div id="recent-visits" class="space-y-3">
-                            <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                                <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm font-bold">G</span>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">Gmail</p>
-                                    <p class="text-xs text-gray-500">2分钟前</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                                <div class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm font-bold">Y</span>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">YouTube</p>
-                                    <p class="text-xs text-gray-500">1小时前</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
-                                    <span class="text-white text-sm font-bold">N</span>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-sm font-medium text-gray-900 truncate">Notion</p>
-                                    <p class="text-xs text-gray-500">3小时前</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 用户欢迎 -->
-                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-6 text-white">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <img src="resources/user-avatar.jpg" alt="用户头像" class="w-12 h-12 rounded-full border-2 border-white">
-                            <div>
-                                <h4 class="font-semibold">欢迎回来</h4>
-                                <p class="text-sm text-blue-100">今天访问了 12 个网站</p>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div>
-                                <div class="text-2xl font-bold">24</div>
-                                <div class="text-xs text-blue-100">收藏网站</div>
-                            </div>
-                            <div>
-                                <div class="text-2xl font-bold">156</div>
-                                <div class="text-xs text-blue-100">本周点击</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="bg-white border-t border-gray-200 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="text-center">
-                <p class="text-gray-600 text-sm">
-                    © 2024 我的导航. 让网络浏览更高效、更智能.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="main.js"></script>
 </body>
 </html>
